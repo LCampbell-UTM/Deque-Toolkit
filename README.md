@@ -9,6 +9,7 @@ Instead of using one big array, the deque uses multiple fixed size blocks that g
 ## Run
 
 make
+
 ./program
 
 
