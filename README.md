@@ -6,6 +6,11 @@ This project implements a deque (double ended queue) using a dynamic 2D array.
 
 Instead of using one big array, the deque uses multiple fixed size blocks that grow as needed.
 
+## Run
+
+make
+./program
+
 
 
 ## Operations
