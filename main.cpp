@@ -4,7 +4,7 @@
 
 int main()
 {
-    IntDeque dq;
+    IntDeque dq; 
 
     std::cout << "Starting test.\n";
 
