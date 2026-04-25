@@ -1,10 +1,13 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -O2
 
-all: program
+TARGET = program
+OBJS = main.o deque.o
 
-program: main.o deque.o
-	$(CXX) $(CXXFLAGS) -o program main.o deque.o
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
 main.o: main.cpp deque.h
 	$(CXX) $(CXXFLAGS) -c main.cpp
@@ -13,4 +16,6 @@ deque.o: deque.cpp deque.h
 	$(CXX) $(CXXFLAGS) -c deque.cpp
 
 clean:
-	rm -f *.o program
+	rm -f $(OBJS) $(TARGET)
+
+.PHONY: all clean
