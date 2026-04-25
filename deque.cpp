@@ -161,6 +161,13 @@ int IntDeque::pop_back()
 
     if (back_index < 0)
     {
+        // FIX: free unused block
+        if (blockmap[end_block] != 0)
+        {
+            delete[] blockmap[end_block];
+            blockmap[end_block] = 0;
+        }
+
         end_block--;
         back_index = block_size - 1;
     }
@@ -212,12 +219,7 @@ int IntDeque::size() const
 
 int IntDeque::operator[](int i) const
 {
-    if (i < 0)
-    {
-        return 0;
-    }
-
-    if (i >= count)
+    if (i < 0 || i >= count)
     {
         return 0;
     }
@@ -225,6 +227,12 @@ int IntDeque::operator[](int i) const
     int global = front_index + i;
     int block = start_block + (global / block_size);
     int offset = global % block_size;
+
+    // FIX: safety check
+    if (blockmap[block] == 0)
+    {
+        return 0;
+    }
 
     return blockmap[block][offset];
 }
