@@ -67,7 +67,7 @@ Blaine Smith
 - .gitignore
 - General comments
 
-TBD
+Not implemented
 -Extra credit template version
 
 
